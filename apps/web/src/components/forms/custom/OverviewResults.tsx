@@ -80,7 +80,7 @@ export default function OverviewResults() {
                           <div className="rounded-lg bg-white px-4 py-5 shadow-lg sm:p-6">
                             <h2 className="mb-6 text-lg font-bold text-slate-800">
                               {elem.label}
-                              <span className="text-brand-dark ml-4 inline-flex items-center rounded-md border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-sm font-medium">
+                              <span className="ml-4 inline-flex items-center rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-sm font-medium text-slate-500">
                                 {capitalizeFirstLetter(elem.type)}
                               </span>
                             </h2>

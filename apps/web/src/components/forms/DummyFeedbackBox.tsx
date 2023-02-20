@@ -1,19 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-declare global {
-  interface Window {
-    formbricks: any;
-  }
-}
-
-export default function FeedbackButton() {
+export default function DummyFeedbackBox() {
+  const [initialized, setInitialized] = useState(false);
   useEffect(() => {
     window.formbricks = {
       ...window.formbricks,
       config: {
-        formbricksUrl: "https://app.formbricks.com",
+        hqUrl: "https://app.formbricks.com",
         formId: "cle2pg7no0000nu0hjefwy3w7",
-        containerId: "formbricks-feedback-wrapper",
+        containerId: "formbricks-feedback",
         contact: {
           name: "Matti",
           position: "Co-Founder",
@@ -21,9 +16,15 @@ export default function FeedbackButton() {
         },
       },
     };
-    require("@formbricks/feedback");
-    window.formbricks.init();
+    // @ts-ignore
+    import("@formbricks/feedback").then(() => setInitialized(true));
   }, []);
 
-  return <div className="bg-slate-50 shadow-lg" id="formbricks-feedback-wrapper"></div>;
+  useEffect(() => {
+    if (initialized) {
+      window.formbricks.render();
+    }
+  }, [initialized]);
+
+  return <div className="my-6 rounded-lg shadow-lg" id="formbricks-feedback"></div>;
 }

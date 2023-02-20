@@ -21,7 +21,8 @@ export default function DummyPMF() {
         },
         style: {
           brandColor: "#6366F1",
-          containerBgColor: "F8FAFC",
+          containerBgColor: "#FFFFFF",
+          borderRadius: "0.5rem",
         },
       },
     };
@@ -29,5 +30,5 @@ export default function DummyPMF() {
     window.formbricksPmf.init();
   }, []);
 
-  return <div className="my-6 rounded-lg shadow-lg" id="formbricks"></div>;
+  return <div className="mb-4 mt-6 rounded-lg shadow-lg" id="formbricks"></div>;
 }

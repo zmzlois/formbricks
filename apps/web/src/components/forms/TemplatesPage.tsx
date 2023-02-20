@@ -10,10 +10,8 @@ import { Button } from "@formbricks/ui";
 import { RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
-import DummyFeedbackBox from "./DummyFeedbackBox";
 import DummyPMF from "./DummyPMF";
-
-// Might have to pass organisationId to the page?
+import DummyFeedbackBox from "./DummyFeedbackBox";
 
 export default function TemplatesPage({ organisationId }) {
   const router = useRouter();
@@ -22,6 +20,19 @@ export default function TemplatesPage({ organisationId }) {
   const [label, setLabel] = useState("");
   const [formType, setFormType] = useState("feedback");
   const { organisation, isLoadingOrganisation, isErrorOrganisation } = useOrganisation(organisationId);
+
+  function handleChange(value) {
+    setFormType(value);
+    if (value === "feedback") {
+      setLabel("Feedback Box");
+    } else if (value === "pmf") {
+      setLabel("Product-Market Fit Survey");
+    } else if (value === "custom") {
+      setLabel("Custom Survey");
+    } else {
+      setLabel("New Survey");
+    }
+  }
 
   const formTypes = useMemo(
     () => [
@@ -220,7 +231,7 @@ export default function TemplatesPage({ organisationId }) {
       <header className="mb-8">
         <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900">
           Templates
-          <span className="text-brand-dark ml-4 inline-flex items-center rounded-md border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-sm font-medium">
+          <span className="ml-4 inline-flex items-center rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-sm font-medium text-slate-500">
             {organisation.name}
           </span>
         </h1>
@@ -250,11 +261,11 @@ export default function TemplatesPage({ organisationId }) {
             </div> */}
             <div className="grid grid-cols-5 gap-x-10">
               <div className="col-span-2">
-                <RadioGroup value={formType} onChange={setFormType}>
+                <RadioGroup value={formType} onChange={handleChange}>
                   {/*               <RadioGroup.Label className="text-sm font-light text-slate-800">
                 Choose your form type
               </RadioGroup.Label> */}
-                  <div className="mt-3 space-y-4">
+                  <div className="space-y-4">
                     {formTypes.map((formType) => (
                       <div key={formType.name}>
                         <RadioGroup.Option
@@ -301,27 +312,30 @@ export default function TemplatesPage({ organisationId }) {
               </div>
               <div className="col-span-3">
                 {formType === "feedback" && (
-                  <div className="p-2">
+                  <div>
                     <h3 className="font-slate-700 mb-2 text-2xl font-bold text-slate-700">Feedback Box</h3>
                     <p className="text-slate-500">Feel the pulse of your user base:</p>
-                    <DummyPMF />
+                    <div className="mt-4 flex h-80 items-end rounded-lg border-2 border-slate-300">
+                      {/* <DummyFeedbackBox /> */}
+                    </div>
                   </div>
                 )}
                 {formType === "pmf" && (
-                  <div className="p-2">
+                  <div>
                     <h3 className="font-slate-700 mb-2 text-2xl font-bold text-slate-700">
                       Product-Market Fit Survey
                     </h3>
-                    <p className="text-slate-500">Feel the pulse of your user base:</p>
+                    <p className="text-slate-500">Measure your Product-Market Fit continuously:</p>
+
                     <DummyPMF />
                   </div>
                 )}
                 {formType === "custom" && (
-                  <div className="p-2">
+                  <div>
                     <h3 className="font-slate-700 mb-2 text-2xl font-bold text-slate-700">Custom Survey</h3>
                     <p className="text-slate-500">Freely set questions and answer options.</p>
-                    <div className="mt-4 flex h-80 items-center justify-center rounded-lg bg-slate-100 font-semibold text-slate-300">
-                      No preview possible, dummy.
+                    <div className="mt-4 flex h-80 items-center justify-center rounded-lg bg-slate-100 font-semibold text-transparent/20">
+                      Imagine your survey here 🌈
                     </div>
                   </div>
                 )}

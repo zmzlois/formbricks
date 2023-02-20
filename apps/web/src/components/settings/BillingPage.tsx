@@ -50,7 +50,7 @@ export default function SettingsPage() {
       <header className="mb-8">
         <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900">
           Billing
-          <span className="text-brand-dark ml-4 inline-flex items-center rounded-md border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-sm font-medium">
+          <span className="ml-4 inline-flex items-center rounded-md border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-sm font-medium text-slate-500">
             {organisation.name}
           </span>
         </h1>
