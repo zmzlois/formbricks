@@ -13,6 +13,7 @@
     "@formbricks/ee": "workspace:*",
     "@formbricks/engine-react": "workspace:*",
     "@formbricks/feedback": "workspace:*",
+    "@formbricks/pmf": "workspace:*",
     "@formbricks/ui": "workspace:*",
     "@headlessui/react": "^1.7.8",
     "@heroicons/react": "^2.0.14",

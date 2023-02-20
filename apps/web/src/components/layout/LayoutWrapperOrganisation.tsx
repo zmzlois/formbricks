@@ -1,6 +1,6 @@
 import { CustomersIcon, DashboardIcon, FormIcon } from "@formbricks/ui";
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, PlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -54,6 +54,11 @@ export default function LayoutWrapperOrganisation({ children }: LayoutWrapperOrg
                   </Disclosure.Button>
                 </div>
                 <div className="hidden sm:flex lg:space-x-4">
+                  <Link
+                    href={`/organisations/${router.query.organisationId}/templates`}
+                    className="from-brand-light to-brand-dark flex items-center justify-center rounded-md bg-gradient-to-b px-1.5 text-white transition-all ease-in-out hover:scale-105">
+                    <PlusIcon className="h-7 w-6" />
+                  </Link>
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
