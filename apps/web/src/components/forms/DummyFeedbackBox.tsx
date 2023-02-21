@@ -8,7 +8,7 @@ export default function DummyFeedbackBox() {
       config: {
         hqUrl: "https://app.formbricks.com",
         formId: "cle2pg7no0000nu0hjefwy3w7",
-        containerId: "formbricks-feedback",
+        containerId: "formbricks-feedback-abc",
         contact: {
           name: "Matti",
           position: "Co-Founder",
@@ -22,9 +22,9 @@ export default function DummyFeedbackBox() {
 
   useEffect(() => {
     if (initialized) {
-      window.formbricks.render();
+      // window.formbricks.render();
     }
   }, [initialized]);
 
-  return <div className="my-6 rounded-lg shadow-lg" id="formbricks-feedback"></div>;
+  return <div className="my-6 rounded-lg shadow-lg" id="formbricks-feedback-abc"></div>;
 }

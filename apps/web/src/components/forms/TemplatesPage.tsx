@@ -19,6 +19,7 @@ export default function TemplatesPage({ organisationId }) {
 
   const [label, setLabel] = useState("");
   const [formType, setFormType] = useState("feedback");
+  const [creatingForm, setCreatingForm] = useState(false);
   const { organisation, isLoadingOrganisation, isErrorOrganisation } = useOrganisation(organisationId);
 
   function handleChange(value) {
@@ -59,8 +60,8 @@ export default function TemplatesPage({ organisationId }) {
     [organisation]
   );
 
-  const createFormAction = async (e) => {
-    e.preventDefault();
+  const createFormAction = async () => {
+    setCreatingForm(true);
     let formTemplate;
     if (formType === "feedback") {
       formTemplate = {
@@ -212,6 +213,7 @@ export default function TemplatesPage({ organisationId }) {
       throw new Error("Unknown form type");
     }
     const form = await createForm(organisationId, formTemplate);
+
     router.push(`/organisations/${organisationId}/forms/${form.id}/${form.type}/`);
   };
 
@@ -239,9 +241,7 @@ export default function TemplatesPage({ organisationId }) {
 
       <div className="">
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <form
-            onSubmit={(e) => createFormAction(e)}
-            className="inline-block w-full transform overflow-hidden p-2 text-left align-bottom transition-all sm:align-middle">
+          <div className="inline-block w-full transform overflow-hidden p-2 text-left align-bottom transition-all sm:align-middle">
             {/* <div>
               <label htmlFor="email" className="text-sm font-light text-slate-800">
                 Name your form
@@ -326,7 +326,6 @@ export default function TemplatesPage({ organisationId }) {
                       Product-Market Fit Survey
                     </h3>
                     <p className="text-slate-500">Measure your Product-Market Fit continuously:</p>
-
                     <DummyPMF />
                   </div>
                 )}
@@ -343,11 +342,15 @@ export default function TemplatesPage({ organisationId }) {
             </div>
 
             <div className="mt-2 sm:mt-2">
-              <Button type="submit" className="float-right">
+              <Button
+                loading={creatingForm}
+                type="button"
+                onClick={() => createFormAction()}
+                className="float-right">
                 Create
               </Button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
