@@ -1,6 +1,6 @@
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { useForm } from "@/lib/forms";
-import { useState } from "react";
+import { persistForm, useForm } from "@/lib/forms";
+import { useEffect, useState } from "react";
 import ManageElements from "./ManageElements";
 import ManageLayout from "./ManageLayout";
 import SidebarTabs from "./SidebarTabs";
@@ -14,11 +14,22 @@ const sidebarTabs = [
 export default function Builder({}) {
   const router = useRouter();
   const { formId, organisationId } = router.query;
-  const { form, isLoadingForm, isErrorForm } = useForm(formId?.toString(), organisationId?.toString());
+  const { form, isLoadingForm, isErrorForm, mutateForm } = useForm(
+    formId?.toString(),
+    organisationId?.toString()
+  );
   const [activeElementId, setActiveElementId] = useState<string>(null);
   const [sidebarMode, setSidebarMode] = useState(sidebarTabs[0].id);
 
-  if (isLoadingForm) return <LoadingSpinner />;
+  useEffect(() => {
+    if (!isLoadingForm && !form.schemaDraft) {
+      const updatedForm = { ...form, schemaDraft: { ...form.schema } };
+      mutateForm(updatedForm, false);
+      persistForm(updatedForm);
+    }
+  }, [isLoadingForm]);
+
+  if (isLoadingForm || !form.schemaDraft) return <LoadingSpinner />;
 
   if (isErrorForm) {
     return <div>Error loading ressources. Maybe you don&lsquo;t have enough access rights</div>;
@@ -26,9 +37,6 @@ export default function Builder({}) {
 
   const getActiveElementCard = () => {
     if (activeElementId === null) return null;
-    const schemaDraft: any = [...form.schema];
-    const elementIdx = schemaDraft.elements.findIndex((e) => e.id === activeElementId);
-    if (typeof elementIdx === "undefined") return null;
     return <div>Preview Survey (TODO)</div>;
   };
   return (

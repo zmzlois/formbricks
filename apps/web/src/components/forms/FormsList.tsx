@@ -6,9 +6,9 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import { EllipsisHorizontalIcon, TrashIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Link from "next/link";
-import { Fragment, useState } from "react";
-import LoadingSpinner from "../LoadingSpinner";
 import { useRouter } from "next/router";
+import { Fragment } from "react";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function FormsList({ organisationId }) {
   const { forms, mutateForms, isLoadingForms } = useForms(organisationId);

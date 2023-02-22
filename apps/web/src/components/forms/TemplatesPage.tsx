@@ -1,17 +1,14 @@
 "use client";
 
-import { PMFIcon, FeedbackIcon, UserCommentIcon } from "@formbricks/ui";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import { useForms } from "@/lib/forms";
+import { createForm, useForms } from "@/lib/forms";
 import { useOrganisation } from "@/lib/organisations";
-import { useRouter } from "next/router";
-import { createForm } from "@/lib/forms";
-import { Button } from "@formbricks/ui";
+import { Button, FeedbackIcon, PMFIcon, UserCommentIcon } from "@formbricks/ui";
 import { RadioGroup } from "@headlessui/react";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import DummyPMF from "./DummyPMF";
-import DummyFeedbackBox from "./DummyFeedbackBox";
 
 export default function TemplatesPage({ organisationId }) {
   const router = useRouter();

@@ -1,8 +1,8 @@
 import { persistForm } from "@/lib/forms";
 
 export default function OpenForm({ element, setElement, form }) {
-  const setElementDataAttribute = (key, value) => {
-    const updatedElement = { ...element };
+  const setElementAttribute = (key, value) => {
+    const updatedElement = JSON.parse(JSON.stringify(element));
     updatedElement[key] = value;
     setElement(updatedElement);
   };
@@ -13,11 +13,11 @@ export default function OpenForm({ element, setElement, form }) {
         <div className="mt-1">
           <input
             type="text"
-            name="question"
+            name="label"
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder="Question"
             value={element.label || ""}
-            onChange={(e) => setElementDataAttribute("label", e.target.value)}
+            onChange={(e) => setElementAttribute("label", e.target.value)}
             onBlur={() => persistForm(form)}
           />
         </div>
@@ -28,7 +28,7 @@ export default function OpenForm({ element, setElement, form }) {
             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder="Help text (optional)"
             value={element.help || ""}
-            onChange={(e) => setElementDataAttribute("help", e.target.value)}
+            onChange={(e) => setElementAttribute("help", e.target.value)}
             onBlur={() => persistForm(form)}
           />
         </div>

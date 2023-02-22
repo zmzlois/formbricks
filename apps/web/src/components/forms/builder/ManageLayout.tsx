@@ -13,6 +13,9 @@ export default function ManageLayout({}) {
 
   const setPrimaryColor = (color) => {
     const updatedForm = JSON.parse(JSON.stringify(form));
+    if (!updatedForm.schemaDraft?.config) {
+      updatedForm.schemaDraft.config = {};
+    }
     updatedForm.schemaDraft.config.colorPrimary = color;
     mutateForm(updatedForm, false);
     persistForm(updatedForm);

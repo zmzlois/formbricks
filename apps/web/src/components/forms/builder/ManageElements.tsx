@@ -16,7 +16,7 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
   );
   const [showElementModal, setShowElementModal] = useState(false);
 
-  const addElement = (type) => {
+  const addElement = async (type) => {
     const updatedSchemaDraft = JSON.parse(JSON.stringify(form.schemaDraft));
     const element: any = {
       id: uuidv4(),
@@ -27,10 +27,13 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
     if (type === "multipleChoice") {
       element.options = "";
     }
+    if (!("elements" in updatedSchemaDraft)) {
+      updatedSchemaDraft.elements = [];
+    }
     updatedSchemaDraft.elements.push(element);
     const updatedForm = { ...form, schemaDraft: updatedSchemaDraft };
+    await persistForm(updatedForm);
     mutateForm(updatedForm, false);
-    persistForm(updatedForm);
     setActiveElementId(element.id);
   };
 
@@ -63,16 +66,15 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
 
   return (
     <>
-      <div className="h-full overflow-y-auto bg-gray-100 px-5 py-5 shadow-inner">
+      <div className="h-full min-h-screen overflow-y-auto bg-gray-100 px-5 py-5 shadow-inner">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
+            {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
-                {form.schemaDraft.elementsDraft.map((element, elementIdx) => (
+                {form.schemaDraft.elements?.map((element, elementIdx) => (
                   <SingleElement
                     key={elementIdx}
-                    element={element}
-                    elementIdx={elementIdx}
+                    elementId={element.id}
                     activeElementId={activeElementId}
                     setActiveElementId={setActiveElementId}
                   />
