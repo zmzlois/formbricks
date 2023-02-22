@@ -38,7 +38,7 @@ export default function SetupInstructions({}) {
                   </a>{" "}
                   for more info.
                 </li>
-                <li>You&apos;re done! Your submissions will show up in the Results tab.</li>
+                <li>You&apos;re done! Your submissions will show up in the Responses tab.</li>
               </ol>
               <div className="mt-6">
                 <h4 className="mb-2 block text-lg font-semibold text-slate-800">
@@ -48,15 +48,15 @@ export default function SetupInstructions({}) {
                   <pre>
                     <code className="language-html whitespace-pre-wrap">
                       {`<!-- HTML header script -->
-<script src="https://cdn.jsdelivr.net/npm/@formbricks/pmf@0.1.0/dist/index.umd.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@formbricks/pmf@0.1" defer></script>
 
 <script>
-window.formbricks = {
-  ...window.formbricks,
+window.formbricksPmf = {
+  ...window.formbricksPmf,
   config: {
     formbricksUrl: "${window.location.protocol}//${window.location.host}",
     formId: "${formId}",
-    containerId: "formbricks-container",
+    containerId: "formbricks-pmf",
   },
 };
 </script>`}
@@ -66,13 +66,15 @@ window.formbricks = {
               </div>
 
               <div className="mt-3">
-                <h4 className="my-2 block text-lg font-semibold text-slate-800">Setup Button onClick</h4>
+                <h4 className="my-2 block text-lg font-semibold text-slate-800">
+                  Add div with corresponding id
+                </h4>
                 <div className="col-span-3 rounded-md bg-black p-4 text-sm font-light text-slate-200">
                   <pre>
                     <code className="language-html whitespace-pre-wrap">
                       {`
 <!-- Element to hold the survey -->
-<div id="formbricks-container"></div>`}
+<div id="formbricks-pmf"></div>`}
                     </code>
                   </pre>
                 </div>
@@ -164,7 +166,7 @@ window.formbricks = {
               Choose an HTML element which you want to replace with the PMF survey. Set a unique ID for this
               element and configure the script accordingly.
             </li>
-            <li>You are ready to receive your first submission and view it in the Results tab.</li>
+            <li>You are ready to receive your first submission and view it in the Responses tab.</li>
             <li>Get notified or pipe submission data to to Slack or Email in the Data Pipelines tab.</li>
           </ol>
         </div>
