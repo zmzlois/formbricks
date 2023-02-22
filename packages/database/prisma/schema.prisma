@@ -63,6 +63,7 @@ model Form {
   organisation   Organisation @relation(fields: [organisationId], references: [id], onDelete: Cascade)
   organisationId String
   schema         Json         @default("{}")
+  schemaDraft    Json?
   submissions    Submission[]
   pipelines      Pipeline[]
 }

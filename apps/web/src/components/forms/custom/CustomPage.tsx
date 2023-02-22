@@ -8,6 +8,7 @@ import {
   InformationCircleIcon,
   RectangleStackIcon,
   ShareIcon,
+  RectangleGroupIcon,
 } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -15,10 +16,12 @@ import PipelinesOverview from "../pipelines/PipelinesOverview";
 import OverviewResults from "./OverviewResults";
 import CustomResults from "./CustomResults";
 import SetupInstructions from "./SetupInstructions";
+import Builder from "../builder/Builder";
 
 const tabs = [
   { name: "Results", icon: RectangleStackIcon },
   { name: "Overview", icon: ChartPieIcon },
+  { name: "Survey Builder", icon: RectangleGroupIcon },
   { name: "Data Pipelines", icon: ShareIcon },
   { name: "Setup Instructions", icon: InformationCircleIcon },
 ];
@@ -54,6 +57,8 @@ export default function CustomPage() {
           <CustomResults />
         ) : currentTab === "Overview" ? (
           <OverviewResults />
+        ) : currentTab === "Survey Builder" ? (
+          <Builder />
         ) : currentTab === "Data Pipelines" ? (
           <PipelinesOverview />
         ) : currentTab === "Setup Instructions" ? (
