@@ -16,7 +16,7 @@ export default function AddElementModal({ open, setOpen, addElement }) {
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
             leaveTo="opacity-0">
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -31,8 +31,8 @@ export default function AddElementModal({ open, setOpen, addElement }) {
             leave="ease-in duration-200"
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-            <div className="inline-block transform overflow-hidden rounded-lg bg-gray-200 text-left align-bottom shadow-xl transition-all sm:w-full sm:max-w-sm sm:align-middle lg:max-w-xl">
-              <div className="divide-y divide-gray-200 overflow-hidden shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0 lg:grid-cols-2">
+            <div className="inline-block transform overflow-hidden rounded-lg bg-slate-200 text-left align-bottom shadow-xl transition-all sm:w-full sm:max-w-sm sm:align-middle lg:max-w-xl">
+              <div className="divide-y divide-slate-200 overflow-hidden shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0 lg:grid-cols-2">
                 {elementTypes.map((elementType, elementTypeIdx) => (
                   <div
                     key={elementType.title}
@@ -68,10 +68,10 @@ export default function AddElementModal({ open, setOpen, addElement }) {
                           {elementType.title}
                         </button>
                       </h3>
-                      <p className="mt-2 text-sm text-gray-500">{elementType.description}</p>
+                      <p className="mt-2 text-sm text-slate-500">{elementType.description}</p>
                     </div>
                     <span
-                      className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                      className="pointer-events-none absolute top-6 right-6 text-slate-300 group-hover:text-slate-400"
                       aria-hidden="true">
                       <svg
                         className="h-6 w-6"

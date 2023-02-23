@@ -14,7 +14,7 @@ export default function OpenForm({ element, setElement, form }) {
           <input
             type="text"
             name="label"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder="Question"
             value={element.label || ""}
             onChange={(e) => setElementAttribute("label", e.target.value)}
@@ -25,7 +25,7 @@ export default function OpenForm({ element, setElement, form }) {
           <input
             type="text"
             name="help"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             placeholder="Help text (optional)"
             value={element.help || ""}
             onChange={(e) => setElementAttribute("help", e.target.value)}

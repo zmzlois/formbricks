@@ -31,7 +31,7 @@ export default function OpenForm({ element, setElement, form }) {
             type="text"
             name="label"
             id="label"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
+            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
             placeholder="Question"
             value={element.label || ""}
             onChange={(e) => setElementAttribute("label", e.target.value)}
@@ -42,7 +42,7 @@ export default function OpenForm({ element, setElement, form }) {
           <input
             type="text"
             name="description"
-            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
+            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-pink-500 focus:ring-pink-500 sm:text-sm"
             placeholder="Help Text (optional)"
             value={element.help || ""}
             onChange={(e) => setElementAttribute("help", e.target.value)}
@@ -53,15 +53,15 @@ export default function OpenForm({ element, setElement, form }) {
           {element.options.map((option, optionIdx) => (
             <div
               key={optionIdx}
-              className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:py-2">
-              <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+              className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-slate-200 sm:py-2">
+              <label className="block text-sm font-medium text-slate-700 sm:mt-px sm:pt-2">
                 Option {optionIdx + 1}
               </label>
               <div className="mt-1 sm:col-span-2 sm:mt-0">
                 <input
                   type="text"
                   name={`option-${optionIdx}`}
-                  className="block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
+                  className="block w-full max-w-lg rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
                   value={option}
                   onChange={(e) => setOption(optionIdx, e.target.value)}
                   onBlur={() => persistForm(form)}
@@ -74,7 +74,7 @@ export default function OpenForm({ element, setElement, form }) {
         <div className="mt-2">
           <Switch.Group as="div" className="flex items-center justify-between">
             <span className="flex flex-grow flex-col">
-              <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+              <Switch.Label as="span" className="text-sm font-medium text-slate-600" passive>
                 Allow multiple selections
               </Switch.Label>
             </span>
@@ -84,7 +84,7 @@ export default function OpenForm({ element, setElement, form }) {
                 setElementConfigAttribute("multipleChoice", !element.config?.multipleChoice || true, true)
               }
               className={clsx(
-                element.config?.multipleChoice ? "bg-pink-600" : "bg-gray-200",
+                element.config?.multipleChoice ? "bg-pink-600" : "bg-slate-200",
                 "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
               )}>
               <span
@@ -100,7 +100,7 @@ export default function OpenForm({ element, setElement, form }) {
         <div className="mt-2">
           <Switch.Group as="div" className="flex items-center justify-between">
             <span className="flex flex-grow flex-col">
-              <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+              <Switch.Label as="span" className="text-sm font-medium text-slate-600" passive>
                 Randomize
               </Switch.Label>
             </span>
@@ -110,7 +110,7 @@ export default function OpenForm({ element, setElement, form }) {
                 setElementConfigAttribute("randomize", !element.config?.randomize || true, true)
               }
               className={clsx(
-                element.config?.randomize ? "bg-pink-600" : "bg-gray-200",
+                element.config?.randomize ? "bg-pink-600" : "bg-slate-200",
                 "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
               )}>
               <span

@@ -71,11 +71,11 @@ export default function LayoutApp({ children }) {
         <meta name="description" content="Build user research into your product" />
       </Head>
       <div className="">
-        <Disclosure as="nav" className="border-b border-slate-200 bg-white">
+        <Disclosure as="nav" className="border-b border-slate-200 bg-slate-50">
           {({ open }) => (
             <>
               <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
-                <div className="flex h-16 justify-between">
+                <div className="flex h-14 justify-between">
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
                       <Link href="/">

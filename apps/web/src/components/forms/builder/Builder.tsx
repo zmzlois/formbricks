@@ -7,8 +7,8 @@ import SidebarTabs from "./SidebarTabs";
 import { useRouter } from "next/router";
 
 const sidebarTabs = [
-  { name: "Elements", id: "elements" },
-  { name: "Layout", id: "layout" },
+  { name: "Questions", id: "elements" },
+  { name: "Styling", id: "layout" },
 ];
 
 export default function Builder({}) {
@@ -40,8 +40,8 @@ export default function Builder({}) {
     return <div>Preview Survey (TODO)</div>;
   };
   return (
-    <div className="flex flex-1 items-stretch overflow-hidden">
-      <main className="flex w-full flex-col border-r border-gray-200 bg-gray-100 md:w-1/3">
+    <div className="mb-10 flex flex-1 items-stretch overflow-hidden">
+      <main className="flex w-full flex-col border-r border-slate-200 bg-slate-100 md:w-1/3">
         <h1 id="primary-heading" className="sr-only">
           Manage Questions
         </h1>
@@ -55,9 +55,9 @@ export default function Builder({}) {
         {/* Primary column */}
         <section
           aria-labelledby="primary-heading"
-          className="relative flex h-full min-w-0 flex-1 flex-col justify-center overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 py-12 shadow-inner sm:px-6 lg:order-last lg:px-8">
+          className="relative flex h-full min-w-0 flex-1 flex-col justify-center overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 py-12  sm:px-6 lg:order-last lg:px-8">
           <div className="absolute right-4 bottom-4">
-            <span className="inline-flex items-center rounded-lg bg-gray-100 px-4 py-1.5 text-lg font-medium text-gray-500">
+            <span className="inline-flex items-center rounded-lg bg-slate-100 px-4 py-1.5 text-lg font-medium text-slate-500">
               Element Preview
             </span>
           </div>

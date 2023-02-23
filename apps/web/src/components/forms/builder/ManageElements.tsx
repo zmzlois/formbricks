@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { persistForm, useForm } from "@/lib/forms";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { SingleElement } from "./SingleElement";
+import { Button } from "@formbricks/ui";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 export default function ManageElements({ activeElementId, setActiveElementId }) {
   const router = useRouter();
@@ -66,7 +68,7 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
 
   return (
     <>
-      <div className="h-full min-h-screen overflow-y-auto bg-gray-100 px-5 py-5 shadow-inner">
+      <div className="h-full overflow-y-auto bg-slate-100 px-5 py-5 shadow-inner">
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
             {(provided) => (
@@ -84,15 +86,11 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
             )}
           </Droppable>
         </DragDropContext>
+        <Button variant="primary" type="button" className=" py-3" onClick={() => setShowElementModal(true)}>
+          Add Question <PlusIcon className="ml-2 h-5 w-5" />
+        </Button>
       </div>
-      <div className="w-full border-t border-gray-200">
-        <button
-          type="button"
-          className="w-full content-center bg-pink-600 px-4 py-3 text-center text-sm font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none"
-          onClick={() => setShowElementModal(true)}>
-          + Add Element
-        </button>
-      </div>
+
       <AddElementModal open={showElementModal} setOpen={setShowElementModal} addElement={addElement} />
     </>
   );

@@ -221,9 +221,9 @@ export default function FilterNavigation({
                     pinOptionFilter(filter.name, option.value, !option.pinned);
                   }}>
                   {option.pinned ? (
-                    <BsPinFill className="h-4 w-4 text-gray-400" />
+                    <BsPinFill className="h-4 w-4 text-slate-400" />
                   ) : (
-                    <BsPin className="h-4 w-4 text-gray-400" />
+                    <BsPin className="h-4 w-4 text-slate-400" />
                   )}
                 </button>
               )}

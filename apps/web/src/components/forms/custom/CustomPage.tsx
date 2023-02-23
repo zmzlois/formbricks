@@ -5,7 +5,7 @@ import TabNavigation from "@/components/TabNavigation";
 import { useForm } from "@/lib/forms";
 import {
   ChartPieIcon,
-  InformationCircleIcon,
+  CodeBracketIcon,
   RectangleStackIcon,
   ShareIcon,
   RectangleGroupIcon,
@@ -19,11 +19,11 @@ import SetupInstructions from "./SetupInstructions";
 import Builder from "../builder/Builder";
 
 const tabs = [
+  { name: "Create", icon: RectangleGroupIcon },
+  { name: "Connect", icon: ShareIcon },
+  { name: "Embed", icon: CodeBracketIcon },
   { name: "Responses", icon: RectangleStackIcon },
-  { name: "Overview", icon: ChartPieIcon },
-  { name: "Survey Builder", icon: RectangleGroupIcon },
-  { name: "Data Pipelines", icon: ShareIcon },
-  { name: "Setup Instructions", icon: InformationCircleIcon },
+  { name: "Summary", icon: ChartPieIcon },
 ];
 
 export default function CustomPage() {
@@ -49,19 +49,19 @@ export default function CustomPage() {
   return (
     <div>
       <main className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-b border-gray-200 pt-8">
-          <h1 className="pb-6 text-4xl font-bold tracking-tight text-gray-900">{form.label}</h1>
+        <div className="border-b border-slate-200 pt-6">
+          <h1 className="pb-4 text-2xl font-bold tracking-tight text-slate-700">{form.label}</h1>
           <TabNavigation tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
         </div>
         {currentTab === "Responses" ? (
           <CustomResults />
-        ) : currentTab === "Overview" ? (
+        ) : currentTab === "Summary" ? (
           <OverviewResults />
-        ) : currentTab === "Survey Builder" ? (
+        ) : currentTab === "Create" ? (
           <Builder />
-        ) : currentTab === "Data Pipelines" ? (
+        ) : currentTab === "Connect" ? (
           <PipelinesOverview />
-        ) : currentTab === "Setup Instructions" ? (
+        ) : currentTab === "Embed" ? (
           <SetupInstructions />
         ) : null}
       </main>

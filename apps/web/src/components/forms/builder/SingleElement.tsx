@@ -8,6 +8,8 @@ import InstructionsForm from "./elementForms/InstructionsForm";
 import MultipleChoiceForm from "./elementForms/MultipleChoiceForm";
 import OpenForm from "./elementForms/OpenForm";
 
+import { TrashIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+
 export function SingleElement({ elementId, activeElementId, setActiveElementId }) {
   const router = useRouter();
   const { formId, organisationId } = router.query;
@@ -72,8 +74,8 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={clsx(
-            activeElementId === element.id ? "border-2 border-pink-400 border-opacity-50" : "",
-            "mb-5 divide-y divide-gray-200 rounded-lg bg-white shadow focus:outline-none"
+            activeElementId === element.id ? "border-brand-dark border-2 border-opacity-50" : "",
+            "mb-5 divide-y divide-slate-200 rounded-lg bg-white shadow focus:outline-none"
           )}>
           <div
             className="w-full px-4 py-5 focus:outline-none sm:px-6"
@@ -81,7 +83,7 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
             <div className="flex items-center">
               <div className="flex-shrink-0">{getElementTypeIcon(element.type)}</div>
               <div className="ml-4">
-                <h3 className="text-md font-medium leading-6 text-gray-900">
+                <h3 className="text-md font-medium leading-6 text-slate-900">
                   {element.label || "New Element"}
                 </h3>
               </div>
@@ -98,11 +100,15 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
                   <InstructionsForm element={element} setElement={setElement} form={form} />
                 ) : null}
               </div>
-              <div className="pr-2 pb-2 text-right ">
-                <button
-                  className="text-sm text-gray-400 hover:underline"
-                  onClick={() => removeElement(element)}>
-                  Remove Element
+              <div className="space-x-3 pr-6 pb-2 text-right">
+                <button className="text-sm text-slate-400">
+                  <ChevronDownIcon className="hover:text-brand-dark inline-block h-4 w-4" />
+                </button>
+                <button className="text-sm text-slate-400">
+                  <ChevronUpIcon className="hover:text-brand-dark inline-block h-4 w-4" />
+                </button>
+                <button className="text-sm text-slate-400" onClick={() => removeElement(element)}>
+                  <TrashIcon className="inline-block h-4 w-4 hover:text-red-500" />
                 </button>
               </div>
             </div>
