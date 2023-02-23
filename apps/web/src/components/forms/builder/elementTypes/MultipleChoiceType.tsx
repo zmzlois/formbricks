@@ -61,7 +61,7 @@ export default function OpenForm({ element, setElement, form }) {
                 <input
                   type="text"
                   name={`option-${optionIdx}`}
-                  className="block w-full max-w-lg rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
+                  className="focus:border-brand-dark focus:ring-brand-dark block w-full max-w-lg rounded-md border-slate-300 shadow-sm sm:max-w-xs sm:text-sm"
                   value={option}
                   onChange={(e) => setOption(optionIdx, e.target.value)}
                   onBlur={() => persistForm(form)}

@@ -142,7 +142,7 @@ export default function ProfileSettingsPage() {
                   type="text"
                   name="label"
                   id="label"
-                  className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="focus:border-brand-dark focus:ring-brand-dark block w-full rounded-md border-slate-300 shadow-sm sm:text-sm"
                   placeholder="Label, e.g. Github"
                 />
               </div>

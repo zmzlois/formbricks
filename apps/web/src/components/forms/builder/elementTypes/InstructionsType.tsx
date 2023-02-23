@@ -14,7 +14,7 @@ export default function InstructionsForm({ element, setElement, form }) {
           <input
             type="text"
             name="label"
-            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="focus:border-brand-dark focus:ring-brand-dark block w-full rounded-md border-slate-300 shadow-sm sm:text-sm"
             placeholder="Title"
             value={element.label || ""}
             onChange={(e) => setElementAttribute("label", e.target.value)}
@@ -25,7 +25,7 @@ export default function InstructionsForm({ element, setElement, form }) {
           <input
             type="text"
             name="help"
-            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="focus:border-brand-dark focus:ring-brand-dark block w-full rounded-md border-slate-300 shadow-sm sm:text-sm"
             placeholder="Description (optional)"
             value={element.help || ""}
             onChange={(e) => setElementAttribute("help", e.target.value)}
@@ -35,7 +35,7 @@ export default function InstructionsForm({ element, setElement, form }) {
         <div className="mt-2">
           <textarea
             name="body"
-            className="block w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="focus:border-brand-dark focus:ring-brand-dark block w-full rounded-md border-slate-300 shadow-sm sm:text-sm"
             placeholder="Your Instructions"
             value={element.html || ""}
             onChange={(e) => setElementAttribute("html", e.target.value)}

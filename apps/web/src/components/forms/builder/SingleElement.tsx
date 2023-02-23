@@ -4,9 +4,9 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import InstructionsForm from "./elementForms/InstructionsForm";
-import MultipleChoiceForm from "./elementForms/MultipleChoiceForm";
-import OpenForm from "./elementForms/OpenForm";
+import InstructionsForm from "./elementTypes/InstructionsType";
+import MultipleChoiceForm from "./elementTypes/MultipleChoiceType";
+import OpenForm from "./elementTypes/FreeTextType";
 
 import { TrashIcon, ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 
@@ -49,9 +49,9 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
         className={clsx(
           `text-${elementType.color}-700`,
           `bg-${elementType.color}-50`,
-          "inline-flex rounded-lg p-3 ring-4 ring-white"
+          "inline-flex rounded-lg p-2 ring-4 ring-white"
         )}>
-        <elementType.icon className="h-4 w-4" aria-hidden="true" />
+        <elementType.icon className="h-5 w-5" aria-hidden="true" />
       </span>
     ) : null;
   };
@@ -78,20 +78,18 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
             "mb-5 divide-y divide-slate-200 rounded-lg bg-white shadow focus:outline-none"
           )}>
           <div
-            className="w-full px-4 py-5 focus:outline-none sm:px-6"
+            className="w-full px-1.5 py-2 focus:outline-none sm:px-6"
             onClick={() => setActiveElementId(element.id)}>
             <div className="flex items-center">
               <div className="flex-shrink-0">{getElementTypeIcon(element.type)}</div>
               <div className="ml-4">
-                <h3 className="text-md font-medium leading-6 text-slate-900">
-                  {element.label || "New Element"}
-                </h3>
+                <h3 className="font-medium leading-6 text-slate-900">{element.label || "New Element"}</h3>
               </div>
             </div>
           </div>
           {activeElementId === element.id && (
             <div>
-              <div className="px-4 py-5 sm:p-6">
+              <div className="px-4 py-3">
                 {element.type === "open" ? (
                   <OpenForm element={element} setElement={setElement} form={form} />
                 ) : element.type === "multipleChoice" ? (
