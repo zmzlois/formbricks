@@ -57,7 +57,7 @@ export default function Builder({}) {
           aria-labelledby="primary-heading"
           className="relative flex h-full min-w-0 flex-1 flex-col justify-center overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 py-12  sm:px-6 lg:order-last lg:px-8">
           <div className="absolute right-4 bottom-4">
-            <span className="inline-flex items-center rounded-lg bg-slate-100 px-4 py-1.5 text-lg font-medium text-slate-500">
+            <span className="inline-flex items-center rounded-lg bg-slate-100 px-4 py-1.5 text-sm font-medium text-slate-500">
               Element Preview
             </span>
           </div>

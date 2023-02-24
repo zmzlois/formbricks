@@ -47,8 +47,15 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
     return elementType ? (
       <span
         className={clsx(
-          `text-${elementType.color}-700`,
-          `bg-${elementType.color}-50`,
+          elementType.color === "purple"
+            ? "bg-purple-100 text-purple-700"
+            : elementType.color === "pink"
+            ? "bg-pink-100 text-pink-700"
+            : elementType.color === "blue"
+            ? "bg-blue-100 text-blue-700"
+            : elementType.color === "orange"
+            ? "bg-amber-100 text-amber-700"
+            : "text-slate-700",
           "inline-flex rounded-lg p-2 ring-4 ring-white"
         )}>
         <elementType.icon className="h-5 w-5" aria-hidden="true" />
@@ -83,7 +90,18 @@ export function SingleElement({ elementId, activeElementId, setActiveElementId }
             <div className="flex items-center">
               <div className="flex-shrink-0">{getElementTypeIcon(element.type)}</div>
               <div className="ml-4">
-                <h3 className="font-medium leading-6 text-slate-900">{element.label || "New Element"}</h3>
+                <h3 className="font-medium leading-6 text-slate-900">
+                  {element.label ||
+                    (element.type === "open"
+                      ? "Open Question"
+                      : element.type === "multipleChoice"
+                      ? "Multiple Choice"
+                      : element.type === "instructions"
+                      ? "Instruction"
+                      : element.type === "thankyou"
+                      ? "Thank You 🤍"
+                      : "New Element")}
+                </h3>
               </div>
             </div>
           </div>

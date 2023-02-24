@@ -86,7 +86,7 @@ export default function ManageElements({ activeElementId, setActiveElementId }) 
             )}
           </Droppable>
         </DragDropContext>
-        <Button variant="primary" type="button" className=" py-3" onClick={() => setShowElementModal(true)}>
+        <Button variant="primary" type="button" className="py-3" onClick={() => setShowElementModal(true)}>
           Add Question <PlusIcon className="ml-2 h-5 w-5" />
         </Button>
       </div>

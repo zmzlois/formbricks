@@ -4,6 +4,8 @@ import { Switch } from "@headlessui/react";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import { ColorPicker } from "./ColorPicker";
+import { Button } from "@formbricks/ui";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 export default function ManageLayout({}) {
   const router = useRouter();
@@ -32,7 +34,7 @@ export default function ManageLayout({}) {
 
   return (
     <>
-      <div className="mx-5 my-4 overflow-hidden overflow-y-auto rounded-lg bg-white shadow">
+      <div className="mx-5 my-4 overflow-y-auto rounded-lg bg-white shadow">
         <div className="px-4 py-5 sm:p-6">
           <div>
             <h3 className="text-lg font-medium leading-6 text-slate-900">Color Theme</h3>
@@ -44,13 +46,13 @@ export default function ManageLayout({}) {
           <ColorPicker name="Button Text Color" attribute="colorButtonText" />
         </div>
       </div>
-      <div className="mx-5 my-4 rounded-lg bg-white shadow ">
+      <div className="mx-5 rounded-lg bg-white shadow ">
         <div className="px-4 py-5 sm:p-6">
           <div>
             <h3 className="text-lg font-medium leading-6 text-gray-900">Other</h3>
           </div>
           <div className="my-6">
-            <label className="block text-sm font-semibold text-gray-500">
+            <label className="block text-sm font-semibold text-gray-700">
               Roundness <span className="font-normal">(border-radius in REM)</span>
             </label>
             <input
@@ -65,11 +67,11 @@ export default function ManageLayout({}) {
             />
           </div>
           <div className="my-6">
-            <label className="block text-sm font-semibold text-gray-500">Controls</label>
+            <label className="block text-sm font-medium text-slate-700">Controls</label>
             <div className="mt-2">
               <Switch.Group as="div" className="flex items-center justify-between">
                 <span className="flex flex-grow flex-col">
-                  <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+                  <Switch.Label as="span" className="text-sm font-medium text-gray-500" passive>
                     Show progress bar
                   </Switch.Label>
                 </span>
@@ -93,7 +95,7 @@ export default function ManageLayout({}) {
             <div className="mt-2">
               <Switch.Group as="div" className="flex items-center justify-between">
                 <span className="flex flex-grow flex-col">
-                  <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+                  <Switch.Label as="span" className="text-sm font-medium text-gray-500" passive>
                     Show Back Navigation
                   </Switch.Label>
                 </span>
@@ -119,7 +121,7 @@ export default function ManageLayout({}) {
             <div className="mt-2">
               <Switch.Group as="div" className="flex items-center justify-between">
                 <span className="flex flex-grow flex-col">
-                  <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+                  <Switch.Label as="span" className="text-sm font-medium text-gray-500" passive>
                     Remove close button
                   </Switch.Label>
                 </span>
@@ -143,7 +145,7 @@ export default function ManageLayout({}) {
             <div className="mt-2">
               <Switch.Group as="div" className="flex items-center justify-between">
                 <span className="flex flex-grow flex-col">
-                  <Switch.Label as="span" className="text-sm font-medium text-gray-600" passive>
+                  <Switch.Label as="span" className="text-sm font-medium text-gray-500" passive>
                     Text Right-to-Left
                   </Switch.Label>
                 </span>
@@ -167,6 +169,9 @@ export default function ManageLayout({}) {
           </div>
         </div>
       </div>
+      <Button className="my-4 mx-5 py-3 text-center">
+        Connect Data Pipelines <ArrowRightIcon className="ml-2 h-4 w-4" />
+      </Button>
     </>
   );
 }

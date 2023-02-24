@@ -48,11 +48,18 @@ export default function AddElementModal({ open, setOpen, addElement }) {
                     <div>
                       <span
                         className={clsx(
-                          `text-${elementType.color}-700`,
-                          `bg-${elementType.color}-50`,
-                          "inline-flex rounded-lg p-3 ring-4 ring-white"
+                          elementType.color === "purple"
+                            ? "bg-purple-100 text-purple-700"
+                            : elementType.color === "pink"
+                            ? "bg-pink-100 text-pink-700"
+                            : elementType.color === "blue"
+                            ? "bg-blue-100 text-blue-700"
+                            : elementType.color === "orange"
+                            ? "bg-amber-100 text-amber-700"
+                            : "text-slate-700",
+                          "inline-flex rounded-lg p-2 ring-4 ring-white"
                         )}>
-                        <elementType.icon className="h-6 w-6" aria-hidden="true" />
+                        <elementType.icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                     </div>
                     <div className="mt-8">
