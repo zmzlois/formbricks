@@ -3,9 +3,7 @@ import { persistForm, useForm } from "@/lib/forms";
 import { Switch } from "@headlessui/react";
 import clsx from "clsx";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { HexColorInput, HexColorPicker } from "react-colorful";
-import { PopoverPicker } from "./PopOverPicker";
+import { ColorPicker } from "./ColorPicker";
 
 export default function ManageLayout({}) {
   const router = useRouter();
@@ -14,16 +12,6 @@ export default function ManageLayout({}) {
     formId?.toString(),
     organisationId?.toString()
   );
-
-  /*   const setPrimaryColor = (color) => {
-    const updatedForm = JSON.parse(JSON.stringify(form));
-    if (!updatedForm.schemaDraft?.config) {
-      updatedForm.schemaDraft.config = {};
-    }
-    updatedForm.schemaDraft.config.colorPrimary = color;
-    mutateForm(updatedForm, false);
-    persistForm(updatedForm);
-  }; */
 
   const setSurveyAttribute = (attribute: string, value: any) => {
     const updatedForm = JSON.parse(JSON.stringify(form));
@@ -34,13 +22,6 @@ export default function ManageLayout({}) {
     mutateForm(updatedForm, false);
     persistForm(updatedForm);
     console.log(updatedForm);
-  };
-
-  const [colorBackground, setColor] = useState(form.schemaDraft?.config?.colorBackground);
-
-  const handleBackgroundColorChange = (newColor) => {
-    setColor(newColor);
-    setSurveyAttribute("colorBackground", newColor);
   };
 
   if (isLoadingForm) return <LoadingSpinner />;
@@ -57,46 +38,10 @@ export default function ManageLayout({}) {
             <h3 className="text-lg font-medium leading-6 text-slate-900">Color Theme</h3>
             <p className="mt-1 text-sm text-slate-500">Choose the colors for your survey.</p>
           </div>
-          <div className="my-6">
-            <label className="mb-2 block text-sm font-medium text-slate-700">Primary Color</label>
-            <div className="flex w-fit items-center space-x-1 rounded border px-2 text-slate-400">
-              #
-              <HexColorInput
-                className="mr-2 ml-2 h-10 w-16 text-slate-500 outline-none focus:border-none"
-                color={colorBackground}
-                onChange={handleBackgroundColorChange}
-              />
-              <PopoverPicker color={colorBackground} onChange={handleBackgroundColorChange} />
-            </div>
-          </div>
-
-          <div className="my-6">
-            <label className="block text-sm font-semibold text-gray-500">Background Color</label>
-            {/*  <TwitterPicker
-              color={form.schemaDraft?.config?.colorBackground}
-              onChangeComplete={(color) => setSurveyAttribute("colorBackground", color.hex)}
-              triangle={"hide"}
-              className="my-2"
-            /> */}
-          </div>
-          <div className="my-6">
-            <label className="block text-sm font-semibold text-gray-500">Question Text Color</label>
-            {/*  <TwitterPicker
-              color={form.schemaDraft?.config?.colorText}
-              onChangeComplete={(color) => setSurveyAttribute("colorText", color.hex)}
-              triangle={"hide"}
-              className="my-2"
-            /> */}
-          </div>
-          <div className="my-6">
-            <label className="block text-sm font-semibold text-gray-500">Button Text Color</label>
-            {/*   <TwitterPicker
-              color={form.schemaDraft?.config?.colorButtonText}
-              onChangeComplete={(color) => setSurveyAttribute("colorButtonText", color.hex)}
-              triangle={"hide"}
-              className="my-2"
-            /> */}
-          </div>
+          <ColorPicker name="Primary Color" attribute="colorPrimary" />
+          <ColorPicker name="Background Color" attribute="colorBackground" />
+          <ColorPicker name="Question Text Color" attribute="colorText" />
+          <ColorPicker name="Button Text Color" attribute="colorButtonText" />
         </div>
       </div>
       <div className="mx-5 my-4 rounded-lg bg-white shadow ">
