@@ -1,6 +1,7 @@
 import clsx from "clsx";
+import { FormName } from "./FormName";
 
-export default function TabNavigation({ tabs, currentTab, setCurrentTab }) {
+export default function TabNavigation({ tabs, currentTab, setCurrentTab, name }) {
   return (
     <div>
       <div className="sm:hidden">
@@ -20,8 +21,11 @@ export default function TabNavigation({ tabs, currentTab, setCurrentTab }) {
         </select>
       </div>
       <div className="hidden sm:block">
-        <div className="border-b border-slate-200">
-          <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+        <div className="flex items-center justify-center border-b border-slate-200">
+          <div className="absolute left-10 text-lg font-bold text-slate-600">
+            <FormName name={name} />
+          </div>
+          <nav className="-mb-px flex space-x-8 text-center" aria-label="Tabs">
             {tabs.map((tab) => (
               <button
                 key={tab.name}

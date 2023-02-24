@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { Fragment, useMemo } from "react";
 import { ToastContainer } from "react-toastify";
 import { Logo } from "../Logo";
+import OrganisationNavbar from "./OrganisationNavbar";
 
 export default function LayoutApp({ children }) {
   const router = useRouter();
@@ -71,17 +72,20 @@ export default function LayoutApp({ children }) {
         <meta name="description" content="Build user research into your product" />
       </Head>
       <div className="">
-        <Disclosure as="nav" className="border-b border-slate-200 bg-slate-50">
+        <Disclosure as="nav" className="border-b border-slate-200 bg-white">
           {({ open }) => (
             <>
               <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
                 <div className="flex h-14 justify-between">
-                  <div className="flex">
+                  {/* <div className="flex">
                     <div className="flex flex-shrink-0 items-center">
                       <Link href="/">
                         <Logo className="block h-8 w-auto" />
                       </Link>
                     </div>
+                  </div> */}
+                  <div className="flex items-center">
+                    <OrganisationNavbar />
                   </div>
                   <div className="hidden sm:ml-6 sm:flex sm:items-center">
                     {/* <button
@@ -93,7 +97,12 @@ export default function LayoutApp({ children }) {
 
                     {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-3">
-                      <div>
+                      <div className="inline-flex">
+                        <div className="mr-4 flex flex-shrink-0 items-center">
+                          <Link href="/">
+                            <Logo className="block h-8 w-auto" />
+                          </Link>
+                        </div>
                         <Menu.Button className="focus:ring-brand flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
                           <Image

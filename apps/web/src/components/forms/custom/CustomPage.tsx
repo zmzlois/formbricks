@@ -48,22 +48,28 @@ export default function CustomPage() {
 
   return (
     <div>
-      <main className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-b border-slate-200 pt-6">
-          <h1 className="pb-4 text-2xl font-bold tracking-tight text-slate-700">{form.label}</h1>
-          <TabNavigation tabs={tabs} currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <main className="">
+        <div className="border-b border-slate-200">
+          <TabNavigation
+            tabs={tabs}
+            currentTab={currentTab}
+            setCurrentTab={setCurrentTab}
+            name={form.label}
+          />
         </div>
-        {currentTab === "Responses" ? (
-          <CustomResults />
-        ) : currentTab === "Summary" ? (
-          <OverviewResults />
-        ) : currentTab === "Create" ? (
-          <Builder />
-        ) : currentTab === "Connect" ? (
-          <PipelinesOverview />
-        ) : currentTab === "Embed" ? (
-          <SetupInstructions />
-        ) : null}
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          {currentTab === "Responses" ? (
+            <CustomResults />
+          ) : currentTab === "Summary" ? (
+            <OverviewResults />
+          ) : currentTab === "Create" ? (
+            <Builder />
+          ) : currentTab === "Connect" ? (
+            <PipelinesOverview />
+          ) : currentTab === "Embed" ? (
+            <SetupInstructions />
+          ) : null}
+        </div>
       </main>
     </div>
   );
